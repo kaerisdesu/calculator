@@ -32,13 +32,10 @@ export const inputDigit = (
   return { ...s, display: s.display + digit };
 };
 
-export const inputDecimal = (
-  s: CalculatorState,
-  digit: string,
-): CalculatorState => {
+export const inputDecimal = (s: CalculatorState): CalculatorState => {
   if (s.error) return s;
   if (s.awaitingOperand) {
-    return { ...s, display: digit, awaitingOperand: false };
+    return { ...s, display: "0.", awaitingOperand: false };
   }
   if (s.display.includes(".")) return s;
   return { ...s, display: s.display + "." };
